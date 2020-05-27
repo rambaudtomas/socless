@@ -2,6 +2,15 @@
 
 SOCless is a serverless framework built to help security teams easily automate their incident response and operations workflows.
 
+# Initial configuration
+
+Run:
+```bash
+$ npm install
+````
+
+In order to install the required node dependencies.
+
 # Overview
 
 SOCless uses the AWS Step Functions and AWS Lambda services to execute user-defined workflows. The workflows, called Playbooks, are defined as JSON objects and triggered by real-time alerts from data sources or AWS CloudWatch schedules.
