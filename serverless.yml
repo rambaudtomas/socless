@@ -8,7 +8,7 @@ provider:
   stage: ${{opt:stage}}
   region: ${{opt:region}}
   role:
-    Fn::GetAtt: [LambdaExecutionRole, 'Arn']
+    ${{ssm:/socless/${{opt:stage}}/sgId}} # CAMBIAR
   versionFunctions: false
   memorySize: 128
   timeout: 10
@@ -19,9 +19,9 @@ provider:
       Ref: ExecutionResultsTable
   vpc:
     securityGroupIds:
-      - Fn::Sub: ${SoclessLambdaVpcSG.GroupId}
+      - ${{ssm:/socless/${{opt:stage}}/sgId}} # El security group id esta en una variable de SSM
     subnetIds:
-      - Ref: SoclessPrivateFunctionSubnet
+      - ${{ssm:/socless/${{opt:stage}}/privateSubnet}} # El subnet id esta en una variable de SSM
 
 plugins:
   - serverless-package-python-functions
@@ -36,12 +36,9 @@ custom:
 
 resources:
   - ${{file(resources/dynamodb.yml)}} # DynamoDB Tables
-  - ${{file(resources/iam.yml)}} # IAM Resources
   - ${{file(resources/sfn.yml)}} # Step Functions Resources
   - ${{file(resources/s3.yml)}} # S3 Resources
   - ${{file(resources/kms.yml)}} # KMS Resources
-  - ${{file(resources/vpc.yml)}} # VPC Resources
-  - ${{file(resources/sg.yml)}} # Security Group resources
   - ${{file(resources/apigateway.yml)}} # API Gateway
   - Outputs:
       MergeParallelOutput:
