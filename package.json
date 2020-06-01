@@ -2,9 +2,9 @@
     "name": "socless",
     "config": {
         "aws_profile": "seginf",
-        "dev": "--stage dev --region us-east-2",
+        "dev": "--stage dev --region sa-east-1",
         "prod": "--stage prod --region us-east-1",
-        "sandbox": "--stage sandbox --region sa-east-1"
+        "sandbox": "--stage sandbox --region us-east-2"
     },
     "version": "1.0.0",
     "description": "Socless' core infrastructure and functionality",

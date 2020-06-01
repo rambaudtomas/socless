@@ -36,7 +36,7 @@ Resources:
             Effect: "Allow"
             Principal:
               AWS:
-                Fn::Sub: ${LambdaExecutionRole.Arn}
+                ${{ssm:/socless/iam/arn}}
             Action:
               - "kms:Decrypt"
             Resource: "*"

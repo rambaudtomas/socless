@@ -6,6 +6,8 @@ Resources:
       Tags:
         - Key: Name
           Value: Socless Vault
+        - Key: Team
+          Value: IRT
       LifecycleConfiguration:
         Rules:
           - ExpirationInDays: 1
@@ -17,6 +19,8 @@ Resources:
       Tags:
         - Key: Name
           Value: Socless Logs
+        - Key: Team
+          Value: IRT
       LifecycleConfiguration:
         Rules:
           - ExpirationInDays: 365

@@ -7,8 +7,10 @@ provider:
   variableSyntax: "\\${{([ ~:a-zA-Z0-9._\\'\",\\-\\/\\(\\)]+?)}}"
   stage: ${{opt:stage}}
   region: ${{opt:region}}
+  deploymentBucket: socless-${{opt:stage}}-deployments
+  deploymentPrefix: core
   role:
-    ${{ssm:/socless/${{opt:stage}}/sgId}} # CAMBIAR
+    ${{ssm:/socless/iam/arn}}
   versionFunctions: false
   memorySize: 128
   timeout: 10

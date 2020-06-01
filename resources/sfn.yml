@@ -9,7 +9,6 @@ Resources:
   # Fetch Outbound Message Responses Task-Token Playbook
   SaveMessageResponseTaskToken:
     Type: AWS::StepFunctions::StateMachine
-    DependsOn: StatesExecutionRole
     Properties:
       DefinitionString:
         Fn::Sub: |
@@ -25,7 +24,7 @@ Resources:
                   }
                 }
       RoleArn:
-        Fn::Sub: ${StatesExecutionRole.Arn}
+        ${{ssm:/socless/iam/arn2}}
 
 
 # Outputs

@@ -3,7 +3,17 @@ Resources:
   APIGateway:
     Type: AWS::ApiGateway::RestApi
     Properties:
-      Name: socless
+      Name: socless-public
+
+  APIGatewayPrivate:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Name: soclessPrivate
+      EndpointConfiguration:
+        Types: 
+          - PRIVATE
+        VpcEndpointIds: 
+          - vpce-0bd7392110e3dc083
 
 Outputs:
   APIGatewayID:
@@ -14,4 +24,14 @@ Outputs:
     Value:
       Fn::GetAtt:
         - APIGateway
+        - RootResourceId
+
+  APIGatewayIDPrivate:
+    Value:
+      Ref: APIGatewayPrivate
+
+  APIGatewayRootResourceIdPrivate:
+    Value:
+      Fn::GetAtt:
+        - APIGatewayPrivate
         - RootResourceId
