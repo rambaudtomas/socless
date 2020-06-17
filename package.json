@@ -12,7 +12,7 @@
     "scripts": {
         "test": "serverless --version",
         "dev": "serverless deploy $npm_package_config_dev --aws-profile $npm_package_config_aws_profile --verbose",
-        "prod": "serverless deploy $npm_package_config_prod --aws-profile $npm_package_config_aws_profile --verbose",
+        "prod": "npx git-branch-is master && serverless deploy $npm_package_config_prod --aws-profile $npm_package_config_aws_profile --verbose",
         "sandbox": "serverless deploy $npm_package_config_sandbox --aws-profile $npm_package_config_aws_profile --verbose"
     },
     "repository": {
@@ -28,7 +28,8 @@
     "license": "ISC",
     "devDependencies": {},
     "dependencies": {
-        "serverless": "^1.63.0",
+        "git-branch-is": "^3.1.0",
+        "serverless": "^1.73.1",
         "serverless-package-python-functions": "^0.6.1"
     }
 }
