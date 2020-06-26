@@ -13,7 +13,7 @@ Resources:
         Types: 
           - PRIVATE
         VpcEndpointIds: 
-          - vpce-0bd7392110e3dc083
+          - ${{ssm:/socless/${{opt:stage}}/vpcendpoint}}
 
 Outputs:
   APIGatewayID:
