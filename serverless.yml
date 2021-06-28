@@ -87,6 +87,11 @@ resources:
         Value:
           Fn::Sub: ${SoclessLogFindingsLambdaFunction.Arn}
 
+      StatesExecutionRoleArn:
+        Description: Arn of the StatesExecutionRole
+        Value:
+          Fn::Sub: ${{ssm:/socless/iam/arn2}}
+
 package:
   individually: true
 
